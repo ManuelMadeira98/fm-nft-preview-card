@@ -1,0 +1,138 @@
+.nft {
+    --content-padding: 1.5rem;
+
+    display: grid;
+    gap: 1rem;
+    max-width: 350px;
+    background-color: var(--clr-neutral-800);
+    padding: var(--content-padding) var(--content-padding) 2rem var(--content-padding);
+    border-radius: 0.9375rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    .img-wrap {
+        border-radius: 0.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+
+        img {
+            width: 302px;
+            height: 302px;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease-in-out;
+            object-fit: cover;
+        }
+
+        .view-icon {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            opacity: 0;
+            background-image: url("/assets/icon-view.svg");
+            transition: all 0.3s ease-in-out;
+        }
+
+        &:is(:hover) .view-icon {
+            opacity: 1;
+        }
+
+        &:is(:hover) img {
+            opacity: 0.5;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--clr-primary-400);
+        }
+    }
+
+    &--title {
+        color: var(--clr-neutral-100);
+        margin-top: 0.5rem;
+        font-size: 1.375rem;
+        font-weight: var(--font-semi-bold);
+        transition: all 0.3s ease;
+
+        &:hover  {
+            cursor: pointer;
+            color: var(--clr-primary-400);
+        }
+    }
+
+    &--description {
+        line-height: 26px;
+        margin-top: -0.25rem;
+        font-weight: var(--font-light);
+    }
+
+    &--details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--clr-neutral-700);
+        padding-bottom: 1rem;
+
+        .eth, .duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+        }
+
+        .eth {
+            color: var(--clr-primary-400);
+            font-weight: var(--font-semi-bold);
+        }
+
+        .eth[data-icon="eth"]::before {
+            content: "";
+            background-image: url("/assets/icon-ethereum.svg");
+            width: 11px;
+            height: 18px;
+        }
+
+        .duration[data-icon="duration"]::before {
+            content: "";
+            background-image: url("/assets/icon-clock.svg");
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &--creation {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.9375rem;
+
+        &[data-avatar="author"]::before {
+            content: "";
+            background: url("/assets/image-avatar.png");
+            background-size: cover;
+            border: 1px solid var(--clr-neutral-100);
+            border-radius: 50%;
+            width: 33px;
+            height: 33px;
+            margin-right: 1.125rem;
+        }
+
+        .author {
+            color: var(--clr-neutral-100);
+            margin-left: 0.25em;
+            transition: all 0.3s ease;
+
+            &:hover {
+                cursor: pointer;
+                color: var(--clr-primary-400);
+            }
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    .nft {
+        .eth, .duration, &--creation {
+            font-size: 1rem;
+        }
+    }
+}
